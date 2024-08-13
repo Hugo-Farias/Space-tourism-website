@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: black;
+
+  scrollbar-gutter: stable;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
+
+  background-image: url("./assets/home/background-home-mobile.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+  @media (min-width: 641px) {
+    background-image: url("./assets/home/background-home-tablet.jpg");
+  }
+  @media (min-width: 769px) {
+    background-image: url("./assets/home/background-home-desktop.jpg");
+  }
+}
