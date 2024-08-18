@@ -2,7 +2,12 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bellefair: ["Bellefair", "serif"],
+        barlow: ["Barlow", "sans-serif"],
+      },
+    },
   },
   plugins: ["prettier-plugin-tailwindcss"],
 };
