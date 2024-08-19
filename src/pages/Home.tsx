@@ -1,4 +1,4 @@
-import Link from "../Router/Link.tsx";
+import Link from "../router/Link.tsx";
 
 const Home = function () {
   return (

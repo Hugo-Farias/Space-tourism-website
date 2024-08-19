@@ -20,7 +20,12 @@ const Link = function ({ to, children, className }: propT) {
   };
 
   return (
-    <a className={className} href={to} onClick={handleClick}>
+    <a
+      className={className}
+      href={to}
+      onClick={(e) => e.preventDefault()}
+      onMouseDown={handleClick}
+    >
       {children}
     </a>
   );
