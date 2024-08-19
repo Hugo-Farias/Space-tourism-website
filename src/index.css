@@ -22,15 +22,31 @@
   min-height: 100%;
   /*min-width: 320px;*/
 
+  transition: all 0.2s ease-in-out;
+  transition-property: background-image, background-color;
+
   background-image: url("./assets/home/background-home-mobile.jpg");
   background-size: cover;
-  background-position: bottom;
+  /*background-position: bottom;*/
   background-repeat: no-repeat;
 
   @media (min-width: 641px) {
     background-image: url("./assets/home/background-home-tablet.jpg");
   }
+
   @media (min-width: 769px) {
     background-image: url("./assets/home/background-home-desktop.jpg");
+  }
+
+  &[data-section="destination"] {
+    background-image: url("./assets/destination/background-destination-mobile.jpg");
+
+    @media (min-width: 641px) {
+      background-image: url("./assets/destination/background-destination-tablet.jpg");
+    }
+
+    @media (min-width: 769px) {
+      background-image: url("./assets/destination/background-destination-desktop.jpg");
+    }
   }
 }

@@ -1,6 +1,9 @@
 import Link from "../router/Link.tsx";
+import { setDataSection } from "../helper.ts";
 
 const Home = function () {
+  setDataSection("home");
+
   return (
     <div className={"flex flex-col items-center gap-5 text-center"}>
       <h2 className={"uppercase tracking-widest"}>So, you want to travel to</h2>

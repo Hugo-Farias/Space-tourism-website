@@ -1,5 +1,5 @@
 import { Children, isValidElement, PropsWithChildren, ReactNode } from "react";
-import usePathname from "./routerHooks/usePathname.tsx";
+import usePathname from "./routerHooks/usePathname.ts";
 
 type PropT = {
   fallback: ReactNode;
@@ -13,7 +13,7 @@ const Routes = ({ children, fallback }: PropT) => {
     return v.props.path;
   });
 
-  const allNull = childrenArray.some((child) => child !== pathname);
+  const allNull = childrenArray.every((child) => child !== pathname);
 
   if (allNull) {
     return fallback;
