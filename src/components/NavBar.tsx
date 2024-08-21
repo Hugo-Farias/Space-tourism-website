@@ -4,8 +4,8 @@ import Link from "../router/Link.tsx";
 
 function NavBar() {
   return (
-    <div className={"mb-12 flex h-10 justify-between"}>
-      <Link to={"/"}>
+    <div className={"flex h-10 justify-between"}>
+      <Link className={"rounded-[50%]"} to={"/"}>
         <img
           className={"h-10 rounded-[50%] border border-stone-500 hover:invert"}
           alt="Logo"

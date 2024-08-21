@@ -4,6 +4,7 @@
 
 :root {
   --font-color: #d0d6f9;
+  /*--font-color: rgba(255, 255, 255, 0.77);*/
   --font-secondary: #0b0d17;
 
   font-family: Barlow, sans-serif;
@@ -25,17 +26,20 @@
   transition: all 0.2s ease-in-out;
   transition-property: background-image, background-color;
 
-  background-image: url("./assets/home/background-home-mobile.jpg");
   background-size: cover;
   /*background-position: bottom;*/
   background-repeat: no-repeat;
 
-  @media (min-width: 641px) {
-    background-image: url("./assets/home/background-home-tablet.jpg");
-  }
+  &[data-section="home"] {
+    background-image: url("./assets/home/background-home-mobile.jpg");
 
-  @media (min-width: 769px) {
-    background-image: url("./assets/home/background-home-desktop.jpg");
+    @media (min-width: 641px) {
+      background-image: url("./assets/home/background-home-tablet.jpg");
+    }
+
+    @media (min-width: 769px) {
+      background-image: url("./assets/home/background-home-desktop.jpg");
+    }
   }
 
   &[data-section="destination"] {

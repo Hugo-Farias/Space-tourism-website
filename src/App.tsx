@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar.tsx";
 import Home from "./pages/Home.tsx";
 import Route from "./router/Route.tsx";
 import Routes from "./router/Routes.tsx";
-import Destination from "./pages/destination/Destination.tsx";
+import Destination from "./pages/Destination.tsx";
 
 function App() {
   const [animRef] = useAutoAnimate();

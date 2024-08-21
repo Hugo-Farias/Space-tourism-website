@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         bellefair: ["Bellefair", "serif"],
         barlow: ["Barlow", "sans-serif"],
+        barlowCondensed: ["Barlow Condensed", "sans-serif"],
       },
     },
   },
