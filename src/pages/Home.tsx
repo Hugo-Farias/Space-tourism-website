@@ -1,17 +1,16 @@
 import Link from "../router/Link.tsx";
 import { setDataSection } from "../helper.ts";
+import SectionTitle from "../components/SectionTitle.tsx";
 
 const Home = function () {
   setDataSection("home");
 
   return (
     <div className={"mt-11 flex flex-col items-center text-center"}>
-      <h3 className={"mb-2 font-barlowCondensed uppercase tracking-[.17rem]"}>
-        So, you want to travel to
-      </h3>
+      <SectionTitle>So, you want to travel to</SectionTitle>
       <h1
         className={
-          "mb-3 font-bellefair text-[4.7rem] uppercase tracking-wider text-white"
+          "mb-3 mt-2 font-bellefair text-[4.7rem] uppercase tracking-wider text-white"
         }
       >
         Space
