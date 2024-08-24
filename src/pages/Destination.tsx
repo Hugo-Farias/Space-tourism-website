@@ -34,6 +34,8 @@ const Destination = function ({ destination }: PropT) {
           {error ? error?.message : ""}
         </div>
       )}
+
+      <ul className={"h-7"}>li*4</ul>
     </div>
   );
 };
