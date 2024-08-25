@@ -15,11 +15,16 @@ type DestinationT = {
 const { destinations } = data;
 
 const Destination = function () {
-  const [destination, setDestination] = useState<DestinationT>(destinations[2]);
+  const [destination, setDestination] = useState<DestinationT>(destinations[1]);
 
   const imgSrc = useImage("destination", destination.images, "png");
 
   setDataSection("destination");
+
+  // TODO: add animation
+  const handleClick = function (id: number) {
+    setDestination(destinations[id]);
+  };
 
   return (
     <div className={"mt-6 flex flex-col items-center gap-6 text-center"}>
@@ -38,10 +43,15 @@ const Destination = function () {
           "flex h-7 gap-4 font-barlowCondensed text-sm tracking-widest"
         }
       >
-        {destinations.map((d) => {
+        {destinations.map((d, i) => {
           return (
-            <li key={d.name}>
-              <button className={"uppercase"}>{d.name}</button>
+            <li key={i}>
+              <button
+                className={"uppercase transition-colors hover:text-white"}
+                onClick={() => handleClick(i)}
+              >
+                {d.name}
+              </button>
             </li>
           );
         })}
