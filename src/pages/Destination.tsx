@@ -1,41 +1,51 @@
 import { setDataSection, toUppercase } from "../helper.ts";
 import SectionTitle from "../components/SectionTitle.tsx";
+import { useState } from "react";
+import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.tsx";
 
-type PropT = {
-  destination: "moon" | "mars" | "europa" | "titan";
+type DestinationT = {
+  name: string;
+  images: string;
+  description: string;
+  distance: string;
+  travel: string;
 };
 
-const Destination = function ({ destination }: PropT) {
-  const { path, loading, error } = useImage(
-    "destination",
-    `image-${destination}`,
-    "webp",
-  );
+const { destinations } = data;
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+const Destination = function () {
+  const [destination, setDestination] = useState<DestinationT>(destinations[2]);
+
+  const imgSrc = useImage("destination", destination.images, "png");
 
   setDataSection("destination");
 
   return (
-    <div className={"mt-6 flex flex-col items-center gap-7 text-center"}>
+    <div className={"mt-6 flex flex-col items-center gap-6 text-center"}>
       <SectionTitle sectionNumber={1}>Pick your destination</SectionTitle>
 
-      {path ? (
+      {imgSrc ? (
         <img
           className={"size-[10.6rem]"}
-          src={path}
-          alt={`${toUppercase(destination)}'s photo`}
+          src={imgSrc}
+          alt={`${toUppercase(destination.name)}'s photo`}
         />
-      ) : (
-        <div className={"size-44 rounded-[50%] bg-white/20"}>
-          {error ? error?.message : ""}
-        </div>
-      )}
+      ) : null}
 
-      <ul className={"h-7"}>li*4</ul>
+      <ul
+        className={
+          "flex h-7 gap-4 font-barlowCondensed text-sm tracking-widest"
+        }
+      >
+        {destinations.map((d) => {
+          return (
+            <li key={d.name}>
+              <button className={"uppercase"}>{d.name}</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

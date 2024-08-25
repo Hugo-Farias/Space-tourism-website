@@ -13,10 +13,7 @@ function App() {
       <NavBar />
       <Routes fallback={<h1 className={"text-4xl"}>404</h1>}>
         <Route path={"/"} element={<Home />} />
-        <Route
-          path={"/destination"}
-          element={<Destination destination={"moon"} />}
-        />
+        <Route path={"/destination"} element={<Destination />} />
       </Routes>
     </div>
   );
