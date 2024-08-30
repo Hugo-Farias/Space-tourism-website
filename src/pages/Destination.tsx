@@ -3,7 +3,7 @@ import SectionTitle from "../components/SectionTitle.tsx";
 import { useState } from "react";
 import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.tsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 type DestinationT = {
   name: string;
@@ -34,9 +34,9 @@ const Destination = function () {
         <motion.img
           className={"size-[10.6rem]"}
           key={imgSrc}
-          initial={{ opacity: 0, rotate: 5 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          exit={{ opacity: 0, rotate: 0 }}
+          initial={{ opacity: 0, rotate: 5, scale: 0.95 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1.0 }}
+          exit={{ opacity: 0, rotate: 0, scale: 3 }}
           transition={{ duration: 1 }}
           src={imgSrc}
           alt={`${toUppercase(destination.name)}'s photo`}
@@ -49,10 +49,12 @@ const Destination = function () {
         }
       >
         {destinations.map((d, i) => {
+          const isActive = d.name === destination.name;
+
           return (
             <li key={i}>
               <button
-                className={"uppercase transition-colors hover:text-white"}
+                className={`uppercase transition-colors hover:text-white ${isActive && "underline underline-offset-8"}`}
                 onClick={() => handleClick(i)}
               >
                 {d.name}
