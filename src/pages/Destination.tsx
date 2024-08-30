@@ -3,6 +3,7 @@ import SectionTitle from "../components/SectionTitle.tsx";
 import { useState } from "react";
 import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.tsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 type DestinationT = {
   name: string;
@@ -21,7 +22,6 @@ const Destination = function () {
 
   setDataSection("destination");
 
-  // TODO: add animation
   const handleClick = function (id: number) {
     setDestination(destinations[id]);
   };
@@ -31,8 +31,13 @@ const Destination = function () {
       <SectionTitle sectionNumber={1}>Pick your destination</SectionTitle>
 
       {imgSrc ? (
-        <img
+        <motion.img
           className={"size-[10.6rem]"}
+          key={imgSrc}
+          initial={{ opacity: 0, rotate: 5 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: 0 }}
+          transition={{ duration: 1 }}
           src={imgSrc}
           alt={`${toUppercase(destination.name)}'s photo`}
         />
