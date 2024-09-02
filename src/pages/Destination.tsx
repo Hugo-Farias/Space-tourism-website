@@ -52,7 +52,7 @@ const Destination = function () {
           const isActive = d.name === destination.name;
 
           return (
-            <li key={i}>
+            <li role={"tablist"} key={i}>
               <button
                 className={`uppercase transition-colors hover:text-white ${isActive && "underline underline-offset-8"}`}
                 onClick={() => handleClick(i)}
