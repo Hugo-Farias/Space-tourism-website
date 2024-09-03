@@ -44,22 +44,25 @@ const Destination = function () {
       ) : null}
 
       <ul
-        className={
-          "flex h-7 gap-4 font-barlowCondensed text-sm tracking-widest"
-        }
+        className={"mt-1 flex h-7 font-barlowCondensed text-sm tracking-widest"}
       >
         {destinations.map((d, i) => {
           const isActive = d.name === destination.name;
 
           return (
-            <li role={"tablist"} key={i}>
-              <button
-                className={`uppercase transition-colors hover:text-white ${isActive && "underline underline-offset-8"}`}
-                onClick={() => handleClick(i)}
-              >
-                {d.name}
-              </button>
-            </li>
+            <div className={""} key={i}>
+              <li role={"tablist"}>
+                <button
+                  className={`px-3 pb-1 font-extralight uppercase transition-colors hover:text-white ${isActive && ""}`}
+                  onClick={() => handleClick(i)}
+                >
+                  {d.name}
+                </button>
+              </li>
+              {isActive && (
+                <div className={"mx-auto w-8 rounded-md border-b-[3px]"} />
+              )}
+            </div>
           );
         })}
       </ul>
