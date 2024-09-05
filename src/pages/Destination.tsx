@@ -70,8 +70,8 @@ const Destination = function () {
         <div
           className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[3px]`}
           style={{
-            translate: `${64 * tabInd}px 0`,
-            transition: "translate 0.3s ease-in-out",
+            translate: `${66 * tabInd}px 0`,
+            transition: "translate .5s",
           }}
         />
       </ul>
@@ -80,7 +80,7 @@ const Destination = function () {
         key={destination.name}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.5, type: "spring" }}
       >
         <h1 className={"font-bellefair text-6xl uppercase -tracking-wide"}>
           {destination.name}
