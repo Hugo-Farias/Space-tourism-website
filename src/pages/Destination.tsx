@@ -1,6 +1,6 @@
 import { setDataSection, toUppercase } from "../helper.ts";
 import SectionTitle from "../components/SectionTitle.tsx";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.tsx";
 import { motion } from "framer-motion";
@@ -16,14 +16,20 @@ type DestinationT = {
 const { destinations } = data;
 
 const Destination = function () {
-  const [destination, setDestination] = useState<DestinationT>(destinations[1]);
+  const [tabInd, setTabInd] = useState<number>(0);
+  const [destination, setDestination] = useState<DestinationT>(
+    destinations[tabInd],
+  );
 
   const imgSrc = useImage("destination", destination.images, "png");
 
   setDataSection("destination");
 
-  const handleClick = function (id: number) {
+  const handleClick = function (e: MouseEvent<HTMLButtonElement>) {
+    const tgt = e.target as HTMLButtonElement;
+    const id = Number(tgt.dataset.id);
     setDestination(destinations[id]);
+    setTabInd(id);
   };
 
   return (
@@ -44,7 +50,9 @@ const Destination = function () {
       ) : null}
 
       <ul
-        className={"mt-1 flex h-7 font-barlowCondensed text-sm tracking-widest"}
+        className={
+          "relative mt-1 flex h-7 font-barlowCondensed text-sm tracking-widest"
+        }
       >
         {destinations.map((d, i) => {
           const isActive = d.name === destination.name;
@@ -53,18 +61,19 @@ const Destination = function () {
             <div className={""} key={i}>
               <li role={"tablist"}>
                 <button
-                  className={`px-3 pb-1 font-extralight uppercase transition-colors hover:text-white ${isActive && ""}`}
-                  onClick={() => handleClick(i)}
+                  data-id={i}
+                  className={`w-[64px] pb-1 font-extralight uppercase transition-colors hover:text-white ${isActive && ""}`}
+                  onClick={handleClick}
                 >
                   {d.name}
                 </button>
               </li>
-              {isActive && (
-                <div className={"mx-auto w-8 rounded-md border-b-[3px]"} />
-              )}
             </div>
           );
         })}
+        <div
+          className={`absolute bottom-0 mx-4 w-8 duration-500 ease-in-out translate-x-[${64 * tabInd}px] rounded-md border-b-[3px] transition-transform`}
+        />
       </ul>
     </div>
   );
