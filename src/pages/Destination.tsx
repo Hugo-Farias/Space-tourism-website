@@ -18,16 +18,16 @@ const { destinations }: { destinations: DestinationT[] } = data;
 const Destination = function () {
   const [tabInd, setTabInd] = useState<number>(3);
   const destination = destinations[tabInd];
-  const imgSrc = useImage("destination", destination.images, "png");
+  const imgSrc = useImage("destination", destination.images, "webp");
 
-  const handleClick = function (e: MouseEvent<HTMLButtonElement>) {
+  const handleClick = function (e: MouseEvent) {
     const tgt = e.target as HTMLButtonElement;
     const id = Number(tgt.dataset.id);
     setTabInd(id);
   };
 
   return (
-    <div className={"mt-6 flex flex-col items-center gap-6 text-center"}>
+    <div className={"flex flex-col items-center gap-6 text-center"}>
       <SectionTitle sectionNumber={1}>Pick your destination</SectionTitle>
 
       {imgSrc ? (

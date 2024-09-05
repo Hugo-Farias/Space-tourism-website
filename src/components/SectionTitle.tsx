@@ -6,7 +6,7 @@ type PropT = {
 
 const SectionTitle = function ({ sectionNumber, children }: PropT) {
   return (
-    <div className={"flex items-center gap-4"}>
+    <div className={"mt-6 flex items-center gap-4"}>
       {sectionNumber ? (
         <span className={"text-sm font-semibold tracking-widest opacity-50"}>
           {sectionNumber.toString().padStart(2, "0")}
