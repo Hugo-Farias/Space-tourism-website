@@ -55,15 +55,13 @@ const Destination = function () {
         }
       >
         {destinations.map((d, i) => {
-          const isActive = d.name === destination.name;
-
           return (
             <div className={""} key={i}>
               <li role={"tablist"}>
                 <button
                   data-id={i}
                   className={`w-[64px] pb-1 font-extralight uppercase transition-colors hover:text-white`}
-                  onClick={handleClick}
+                  onMouseDown={handleClick}
                 >
                   {d.name}
                 </button>
@@ -72,7 +70,11 @@ const Destination = function () {
           );
         })}
         <div
-          className={`absolute bottom-0 mx-4 w-8 duration-500 ease-in-out translate-x-[${64 * tabInd}px] rounded-md border-b-[3px] transition-transform`}
+          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[3px]`}
+          style={{
+            translate: `${64 * tabInd}px 0`,
+            transition: "translate 0.3s ease-in-out",
+          }}
         />
       </ul>
     </div>
