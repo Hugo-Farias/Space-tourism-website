@@ -29,18 +29,19 @@ const Crew = function () {
     <div className={"flex flex-col items-center gap-6"}>
       <SectionTitle sectionNumber={2}>Meet Your Crew</SectionTitle>
 
-      {imgSrc ? (
-        <motion.img
-          className={"size-[10.6rem]"}
-          key={imgSrc}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 0 }}
-          transition={{ duration: 1 }}
-          src={imgSrc}
-          alt={`${toUppercase(member.name)}'s photo`}
-        />
-      ) : null}
+      <div className={"h-56 w-80 overflow-hidden"}>
+        {imgSrc ? (
+          <motion.img
+            className={"mx-auto h-full"}
+            key={imgSrc}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            src={imgSrc}
+            alt={`${toUppercase(member.name)}'s photo`}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };
