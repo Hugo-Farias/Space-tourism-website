@@ -89,6 +89,25 @@ const Destination = function () {
         <p className={"text-[0.95rem] font-light leading-[1.56rem]"}>
           {destination.description}
         </p>
+
+        <div
+          className={
+            "mt-8 flex flex-col justify-between border-t border-gray-400/30 pt-8"
+          }
+        >
+          <div className={"flex flex-col gap-3"}>
+            <h4
+              className={
+                "font-barlowCondensed text-sm font-light uppercase tracking-[0.15rem]"
+              }
+            >
+              Avg. distance
+            </h4>
+            <p className={"font-bellefair text-2xl uppercase tracking-widest"}>
+              {destination.distance}
+            </p>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
