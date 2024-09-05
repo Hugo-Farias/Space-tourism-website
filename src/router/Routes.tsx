@@ -20,7 +20,6 @@ const Routes = ({ children, fallback }: PropT) => {
     setDataSection("Error 404");
     return fallback;
   } else {
-    console.log(pathname);
     setDataSection(pathname);
     return children;
   }
