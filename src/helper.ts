@@ -1,5 +1,8 @@
 export const setDataSection = function (section: string) {
-  document.documentElement.setAttribute("data-section", section);
+  let sectionName = section.replace("/", "");
+  if (section === "/") sectionName = "home";
+  document.title = toUppercase(sectionName);
+  document.documentElement.setAttribute("data-section", sectionName);
 };
 
 export const toUppercase = function (word: string) {

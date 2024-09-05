@@ -4,6 +4,7 @@ import Home from "./pages/Home.tsx";
 import Route from "./router/Route.tsx";
 import Routes from "./router/Routes.tsx";
 import Destination from "./pages/Destination.tsx";
+import Crew from "./pages/Crew.tsx";
 
 function App() {
   const [animRef] = useAutoAnimate();
@@ -14,6 +15,7 @@ function App() {
       <Routes fallback={<h1 className={"text-4xl"}>404</h1>}>
         <Route path={"/"} element={<Home />} />
         <Route path={"/destination"} element={<Destination />} />
+        <Route path={"/crew"} element={<Crew />} />
       </Routes>
     </div>
   );

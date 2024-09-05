@@ -1,4 +1,4 @@
-import { setDataSection, toUppercase } from "../helper.ts";
+import { toUppercase } from "../helper.ts";
 import SectionTitle from "../components/SectionTitle.tsx";
 import { useState, MouseEvent } from "react";
 import data from "../assets/doc/data.json";
@@ -19,8 +19,6 @@ const Destination = function () {
   const [tabInd, setTabInd] = useState<number>(3);
   const destination = destinations[tabInd];
   const imgSrc = useImage("destination", destination.images, "png");
-
-  setDataSection("destination");
 
   const handleClick = function (e: MouseEvent<HTMLButtonElement>) {
     const tgt = e.target as HTMLButtonElement;

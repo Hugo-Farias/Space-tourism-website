@@ -1,5 +1,6 @@
 import { Children, isValidElement, PropsWithChildren, ReactNode } from "react";
 import usePathname from "./routerHooks/usePathname.ts";
+import { setDataSection } from "../helper.ts";
 
 type PropT = {
   fallback: ReactNode;
@@ -16,8 +17,11 @@ const Routes = ({ children, fallback }: PropT) => {
   const allNull = childrenArray.every((child) => child !== pathname);
 
   if (allNull) {
+    setDataSection("Error 404");
     return fallback;
   } else {
+    console.log(pathname);
+    setDataSection(pathname);
     return children;
   }
 };

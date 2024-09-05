@@ -1,10 +1,7 @@
 import Link from "../router/Link.tsx";
-import { setDataSection } from "../helper.ts";
 import SectionTitle from "../components/SectionTitle.tsx";
 
 const Home = function () {
-  setDataSection("home");
-
   return (
     <div className={"mt-11 flex flex-col items-center text-center"}>
       <SectionTitle>So, you want to travel to</SectionTitle>
@@ -26,7 +23,7 @@ const Home = function () {
         className={
           "mt-20 flex size-[150px] items-center justify-center rounded-[50%] bg-white font-bellefair text-[1.4rem] uppercase text-black"
         }
-        to={"/destination"}
+        to={"/crew"}
       >
         Explore
       </Link>
