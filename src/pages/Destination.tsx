@@ -62,7 +62,7 @@ const Destination = function () {
               <li role={"tablist"}>
                 <button
                   data-id={i}
-                  className={`w-[64px] pb-1 font-extralight uppercase transition-colors hover:text-white ${isActive && ""}`}
+                  className={`w-[64px] pb-1 font-extralight uppercase transition-colors hover:text-white`}
                   onClick={handleClick}
                 >
                   {d.name}
