@@ -13,13 +13,12 @@ type DestinationT = {
   travel: string;
 };
 
-const { destinations } = data;
+const { destinations }: { destinations: DestinationT[] } = data;
 
 const Destination = function () {
-  const [tabInd, setTabInd] = useState<number>(0);
-  const [destination, setDestination] = useState<DestinationT>(
-    destinations[tabInd],
-  );
+  const [tabInd, setTabInd] = useState<number>(3);
+
+  const destination = destinations[tabInd];
 
   const imgSrc = useImage("destination", destination.images, "png");
 
@@ -28,7 +27,6 @@ const Destination = function () {
   const handleClick = function (e: MouseEvent<HTMLButtonElement>) {
     const tgt = e.target as HTMLButtonElement;
     const id = Number(tgt.dataset.id);
-    setDestination(destinations[id]);
     setTabInd(id);
   };
 
@@ -51,7 +49,7 @@ const Destination = function () {
 
       <ul
         className={
-          "relative mt-1 flex h-7 font-barlowCondensed text-sm tracking-widest"
+          "relative mt-1.5 flex h-7 font-barlowCondensed text-sm tracking-widest"
         }
       >
         {destinations.map((d, i) => {
@@ -60,7 +58,7 @@ const Destination = function () {
               <li role={"tablist"}>
                 <button
                   data-id={i}
-                  className={`w-[64px] pb-1 font-extralight uppercase transition-colors hover:text-white`}
+                  className={`w-[66px] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
                   onMouseDown={handleClick}
                 >
                   {d.name}
@@ -77,6 +75,21 @@ const Destination = function () {
           }}
         />
       </ul>
+
+      <motion.div
+        key={destination.name}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h1 className={"font-bellefair text-6xl uppercase -tracking-wide"}>
+          {destination.name}
+        </h1>
+
+        <p className={"text-[0.95rem] font-light leading-[1.56rem]"}>
+          {destination.description}
+        </p>
+      </motion.div>
     </div>
   );
 };
