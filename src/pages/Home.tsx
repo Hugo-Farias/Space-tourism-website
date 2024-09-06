@@ -21,7 +21,7 @@ const Home = function () {
 
       <Link
         className={
-          "mt-20 flex size-[150px] items-center justify-center rounded-[50%] bg-white font-bellefair text-[1.4rem] uppercase text-black"
+          "mt-20 flex size-[9.37rem] items-center justify-center rounded-[50%] bg-white font-bellefair text-[1.4rem] uppercase text-black"
         }
         to={"/crew"}
       >

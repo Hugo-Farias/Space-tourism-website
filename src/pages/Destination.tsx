@@ -48,7 +48,7 @@ const Destination = function () {
               <li role={"tablist"}>
                 <button
                   data-id={i}
-                  className={`w-[66px] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
+                  className={`w-[4.125rem] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
                   onMouseDown={(e) => handleTabSelect(e, setTabInd)}
                 >
                   {d.name}
@@ -58,7 +58,7 @@ const Destination = function () {
           );
         })}
         <div
-          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[3px]`}
+          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem]`}
           style={{
             translate: `${66 * tabInd}px 0`,
             transition: "translate .5s",
