@@ -58,7 +58,7 @@ const Destination = function () {
           );
         })}
         <div
-          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem]`}
+          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem] will-change-transform`}
           style={{
             translate: `${66 * tabInd}px 0`,
             transition: "translate .5s",
