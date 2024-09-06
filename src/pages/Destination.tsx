@@ -1,8 +1,8 @@
-import { toUppercase } from "../helper.ts";
+import { handleTabSelect, toUppercase } from "../helper.ts";
 import SectionTitle from "../components/SectionTitle.tsx";
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 import data from "../assets/doc/data.json";
-import useImage from "../hooks/useImage.tsx";
+import useImage from "../hooks/useImage.ts";
 import { motion } from "framer-motion";
 
 type DestinationT = {
@@ -20,12 +20,6 @@ const Destination = function () {
   const destination = destinations[tabInd];
   const imgSrc = useImage("destination", destination.images, "webp");
 
-  const handleClick = function (e: MouseEvent) {
-    const tgt = e.target as HTMLButtonElement;
-    const id = Number(tgt.dataset.id);
-    setTabInd(id);
-  };
-
   return (
     <div className={"flex flex-col items-center gap-6 text-center"}>
       <SectionTitle sectionNumber={1}>Pick your destination</SectionTitle>
@@ -36,7 +30,6 @@ const Destination = function () {
           key={imgSrc}
           initial={{ opacity: 0, rotate: 5, scale: 0.95 }}
           animate={{ opacity: 1, rotate: 0, scale: 1.0 }}
-          exit={{ opacity: 0, rotate: 0, scale: 3 }}
           transition={{ duration: 1 }}
           src={imgSrc}
           alt={`${toUppercase(destination.name)}'s photo`}
@@ -55,7 +48,7 @@ const Destination = function () {
                 <button
                   data-id={i}
                   className={`w-[66px] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
-                  onMouseDown={handleClick}
+                  onMouseDown={(e) => handleTabSelect(e, setTabInd)}
                 >
                   {d.name}
                 </button>
@@ -88,7 +81,7 @@ const Destination = function () {
 
         <div
           className={
-            "mt-8 flex flex-col justify-between gap-7 border-t border-gray-400/30 pt-8"
+            "mt-8 flex flex-col justify-between gap-7 border-t border-white/20 pt-8"
           }
         >
           <div className={"flex flex-col gap-3"}>
