@@ -4,6 +4,7 @@ import { useState } from "react";
 import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.ts";
 import { motion } from "framer-motion";
+import Info from "../components/Info.tsx";
 
 type DestinationT = {
   name: string;
@@ -65,12 +66,7 @@ const Destination = function () {
         />
       </ul>
 
-      <motion.div
-        key={destination.name}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, type: "spring" }}
-      >
+      <Info id={destination.name}>
         <h1 className={"font-bellefair text-6xl uppercase -tracking-wide"}>
           {destination.name}
         </h1>
@@ -109,7 +105,7 @@ const Destination = function () {
             </p>
           </div>
         </div>
-      </motion.div>
+      </Info>
     </div>
   );
 };

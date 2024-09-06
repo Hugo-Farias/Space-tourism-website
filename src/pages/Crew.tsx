@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { handleTabSelect, toUppercase } from "../helper.ts";
 import { useState } from "react";
 import useImage from "../hooks/useImage.ts";
+import Info from "../components/Info.tsx";
 
 type CrewT = {
   name: string;
@@ -46,7 +47,7 @@ const Crew = function () {
               key={i}
               data-id={i}
               onMouseDown={(e) => handleTabSelect(e, setTab)}
-              className={"h-full w-[26px]"}
+              className={"h-full w-[1.625rem]"}
             >
               <div
                 data-id={i}
@@ -56,6 +57,19 @@ const Crew = function () {
           );
         })}
       </div>
+      <Info id={member.name}>
+        <div className={"text-center"}>
+          <p className={"mb-1 font-bellefair uppercase text-white/40"}>
+            {member.role}
+          </p>
+          <h2 className={"mb-3 font-bellefair text-2xl uppercase"}>
+            {member.name}
+          </h2>
+          <p className={"text-[0.95rem] font-extralight leading-[1.56rem]"}>
+            {member.bio}
+          </p>
+        </div>
+      </Info>
     </div>
   );
 };
