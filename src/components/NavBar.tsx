@@ -1,6 +1,4 @@
 import logo from "../assets/shared/logo.svg";
-// import menu from "../assets/shared/icon-hamburger.svg";
-// import close from "../assets/shared/icon-close.svg";
 import Link from "../router/Link.tsx";
 import { useState } from "react";
 import Menu from "./Menu.tsx";
