@@ -8,6 +8,9 @@ export default {
         barlow: ["Barlow", "sans-serif"],
         barlowCondensed: ["Barlow Condensed", "sans-serif"],
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],
