@@ -22,11 +22,6 @@ function NavBar() {
         />
       </Link>
       <button className={"flex gap-6"} onMouseDown={toggleMenu}>
-        {/*{isOpen ? (*/}
-        {/*  <img src={close} alt="Menu" />*/}
-        {/*) : (*/}
-        {/*<img src={menu} alt="Open Menu" />*/}
-        {/*)}*/}
         <Menu open={isOpen} />
       </button>
     </div>
