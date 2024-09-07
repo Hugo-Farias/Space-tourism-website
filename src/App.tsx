@@ -12,7 +12,7 @@ function App() {
   return (
     <div ref={animRef} className={"m-6 flex flex-col"}>
       <NavBar />
-      <Routes fallback={<h1 className={"text-4xl"}>404</h1>}>
+      <Routes fallback={<h1 className={"mx-auto text-4xl"}>404</h1>}>
         <Route path={"/"} element={<Home />} />
         <Route path={"/destination"} element={<Destination />} />
         <Route path={"/crew"} element={<Crew />} />
