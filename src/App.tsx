@@ -18,7 +18,7 @@ function App() {
   const [animRef] = useAutoAnimate();
 
   return (
-    <div ref={animRef} className={"m-6 flex flex-col"}>
+    <div className={"m-6 flex flex-col"}>
       <NavBar nav={nav} />
       <Routes fallback={<h1 className={"mx-auto text-4xl"}>404</h1>}>
         <Route path={"/"} element={<Home />} />
