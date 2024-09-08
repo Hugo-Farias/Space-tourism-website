@@ -12,8 +12,9 @@
   color: var(--font-color);
 
   background-color: #0b0d19;
+  /*overflow-x: hidden;*/
 
-  /*scrollbar-gutter: stable;*/
+  scrollbar-gutter: stable;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
