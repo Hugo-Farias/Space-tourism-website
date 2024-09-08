@@ -15,9 +15,9 @@ function NavBar() {
 
   return (
     <nav className={"z-10 flex h-10 items-center justify-between"}>
-      <Link className={"rounded-[50%]"} to={"/"}>
+      <Link className={"rounded-full"} to={"/"}>
         <img
-          className={"h-10 rounded-[50%] border border-stone-500 hover:invert"}
+          className={"h-10 rounded-full border border-stone-500 hover:invert"}
           alt="Logo"
           src={logo}
         />
@@ -30,7 +30,7 @@ function NavBar() {
           <>
             <motion.div
               className={
-                "fixed right-0 top-0 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 backdrop-blur-xl backdrop-saturate-100"
+                "fixed right-0 top-0 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 backdrop-blur-xl"
               }
               initial={{ opacity: 1, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
