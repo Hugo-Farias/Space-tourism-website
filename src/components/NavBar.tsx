@@ -30,7 +30,7 @@ function NavBar() {
           <>
             <motion.div
               className={
-                "fixed right-0 top-0 h-screen w-64 rounded-bl-md rounded-tl-md border border-white/15 bg-gray-500/5 backdrop-blur-xl backdrop-saturate-100"
+                "fixed right-0 top-0 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 backdrop-blur-xl backdrop-saturate-100"
               }
               initial={{ opacity: 1, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
