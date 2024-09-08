@@ -22,7 +22,7 @@ function NavBar() {
           src={logo}
         />
       </Link>
-      <button className={"z-10 flex gap-6"} onMouseDown={toggleMenu}>
+      <button className={"z-30 flex gap-6"} onMouseDown={toggleMenu}>
         <MenuButton open={isOpen} />
       </button>
       <AnimatePresence>
@@ -30,7 +30,7 @@ function NavBar() {
           <>
             <motion.div
               className={
-                "fixed right-0 top-0 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 backdrop-blur-xl"
+                "fixed right-0 top-0 z-20 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 backdrop-blur-xl"
               }
               initial={{ opacity: 1, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
