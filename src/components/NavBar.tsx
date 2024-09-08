@@ -50,7 +50,11 @@ function NavBar({ nav }: PropT) {
               >
                 {nav.map((item) => (
                   <li key={item.number}>
-                    <Link className={"flex gap-3"} to={item.path}>
+                    <Link
+                      className={"flex gap-3"}
+                      to={item.path}
+                      onClick={toggleMenu}
+                    >
                       <span className={"font-bold"}>
                         {item.number.toString().padStart(2, "0")}
                       </span>

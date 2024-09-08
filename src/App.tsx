@@ -1,4 +1,3 @@
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import NavBar from "./components/NavBar.tsx";
 import Home from "./pages/Home.tsx";
 import Route from "./router/Route.tsx";
@@ -15,8 +14,6 @@ const nav: NavT = [
 ];
 
 function App() {
-  const [animRef] = useAutoAnimate();
-
   return (
     <div className={"m-6 flex flex-col"}>
       <NavBar nav={nav} />

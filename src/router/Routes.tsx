@@ -1,12 +1,14 @@
 import { Children, isValidElement, PropsWithChildren, ReactNode } from "react";
 import usePathname from "./routerHooks/usePathname.ts";
 import { setDataSection } from "../helper.ts";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 type PropT = {
   fallback: ReactNode;
 } & PropsWithChildren;
 
 const Routes = ({ children, fallback }: PropT) => {
+  const [animRef] = useAutoAnimate();
   const pathname = usePathname();
 
   const childrenArray: string[] = Children.toArray(children).map((v) => {
@@ -21,7 +23,7 @@ const Routes = ({ children, fallback }: PropT) => {
     return fallback;
   } else {
     setDataSection(pathname);
-    return children;
+    return <div ref={animRef}>{children}</div>;
   }
 };
 
