@@ -11,10 +11,10 @@ const Link = function ({ to, children, onClick, className }: propT) {
   const handleClick = function (e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
 
-    if (onClick) onClick();
     // Prevents the browser from navigating to the URL if page is already active
     if (to.replace("/", "") === window.location.pathname.replace("/", ""))
       return null;
+    if (onClick) onClick();
 
     window.history.pushState({}, "", to);
 
