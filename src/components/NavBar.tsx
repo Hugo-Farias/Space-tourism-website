@@ -6,17 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NavT } from "../App.tsx";
 
 type PropT = {
-  nav: NavT;
+  nav: readonly NavT[];
 };
 
 function NavBar({ nav }: PropT) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  function toggleMenu() {
-    // document.body.style.overflow = isOpen ? "auto" : "hidden";
-
-    setIsOpen(!isOpen);
-  }
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className={"z-10 flex h-10 items-center justify-between"}>

@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "git": "git add -A && tsc --noemit && git commit -m",
-    "postgit": "git push",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

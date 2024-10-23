@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
+import { PathsT } from "../App.tsx";
 
 type propT = {
-  to: string;
+  to: PathsT;
   children: ReactNode;
   onClick?: () => void;
   className?: string;
