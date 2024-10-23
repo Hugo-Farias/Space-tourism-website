@@ -13,7 +13,7 @@ function NavBar({ nav }: PropT) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   function toggleMenu() {
-    document.body.style.overflow = isOpen ? "auto" : "hidden";
+    // document.body.style.overflow = isOpen ? "auto" : "hidden";
 
     setIsOpen(!isOpen);
   }
@@ -22,7 +22,7 @@ function NavBar({ nav }: PropT) {
     <nav className={"z-10 flex h-10 items-center justify-between"}>
       <Link className={"rounded-full"} to={"/"}>
         <img
-          className={"h-10 rounded-full border border-stone-500 hover:invert"}
+          className={"hover: h-10 rounded-full border border-stone-500"}
           alt="Logo"
           src={logo}
         />
@@ -30,6 +30,8 @@ function NavBar({ nav }: PropT) {
       <button className={"z-30"} onMouseDown={toggleMenu}>
         <MenuButton open={isOpen} />
       </button>
+
+      {/* Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -37,10 +39,10 @@ function NavBar({ nav }: PropT) {
               className={
                 "fixed right-0 top-0 z-20 h-screen w-64 rounded-bl-md rounded-tl-md border-y border-l border-white/15 bg-gray-500/5 px-8 py-28 backdrop-blur-2xl"
               }
-              initial={{ opacity: 1, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 1, x: "100%" }}
-              transition={{ duration: 0.2 }}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.2, type: "just" }}
               key={"menu"}
             >
               <ul
@@ -48,20 +50,25 @@ function NavBar({ nav }: PropT) {
                   "space-y-6 font-barlowCondensed text-lg uppercase tracking-widest"
                 }
               >
-                {nav.map((item) => (
-                  <li key={item.number}>
-                    <Link
-                      className={"flex gap-3"}
-                      to={item.path}
-                      onClick={toggleMenu}
-                    >
-                      <span className={"font-bold"}>
-                        {item.number.toString().padStart(2, "0")}
-                      </span>
-                      <h4 className={""}>{item.label}</h4>
-                    </Link>
-                  </li>
-                ))}
+                {nav.map((item) => {
+                  const isActive = item.path === window.location.pathname;
+                  return (
+                    <li key={item.number}>
+                      <Link
+                        className={`flex gap-3 ${
+                          isActive ? "opacity-50" : "opacity"
+                        }`}
+                        to={item.path}
+                        onClick={toggleMenu}
+                      >
+                        <span className={"font-bold"}>
+                          {item.number.toString().padStart(2, "0")}
+                        </span>
+                        <h4 className={"font-light"}>{item.label}</h4>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
             <div

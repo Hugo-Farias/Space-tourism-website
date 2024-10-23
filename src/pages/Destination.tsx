@@ -17,8 +17,8 @@ type DestinationT = {
 const { destinations }: { destinations: DestinationT[] } = data;
 
 const Destination = function () {
-  const [tabInd, setTabInd] = useState<number>(3);
-  const destination = destinations[tabInd];
+  const [tab, setTab] = useState<number>(0);
+  const destination = destinations[tab];
   const imgSrc = useImage("destination", destination.images, "webp");
 
   return (
@@ -44,23 +44,21 @@ const Destination = function () {
       >
         {destinations.map((d, i) => {
           return (
-            <div className={""} key={i}>
-              <li role={"tablist"}>
-                <button
-                  data-id={i}
-                  className={`w-[4.125rem] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
-                  onMouseDown={(e) => handleTabSelect(e, setTabInd)}
-                >
-                  {d.name}
-                </button>
-              </li>
-            </div>
+            <li role={"tablist"} key={i}>
+              <button
+                data-id={i}
+                className={`w-[4.125rem] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
+                onMouseDown={(e) => handleTabSelect(e, setTab)}
+              >
+                {d.name}
+              </button>
+            </li>
           );
         })}
         <div
           className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem] will-change-transform`}
           style={{
-            translate: `${66 * tabInd}px 0`,
+            translate: `${66 * tab}px 0`,
             transition: "translate .5s",
           }}
         />

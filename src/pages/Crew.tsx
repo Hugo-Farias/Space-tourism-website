@@ -2,7 +2,7 @@ import SectionTitle from "../components/SectionTitle.tsx";
 import data from "../assets/doc/data.json";
 import { motion } from "framer-motion";
 import { handleTabSelect, toUppercase } from "../helper.ts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useImage from "../hooks/useImage.ts";
 import Info from "../components/Info.tsx";
 
@@ -19,6 +19,10 @@ const Crew = function () {
   const [tab, setTab] = useState<number>(0);
   const member = crew[tab];
   const imgSrc = useImage("crew", member.images, "webp");
+
+  useEffect(() => {
+    console.log(tab);
+  }, [tab]);
 
   return (
     <div className={"flex flex-col items-center gap-7"}>

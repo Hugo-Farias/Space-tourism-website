@@ -19,7 +19,7 @@ const Routes = ({ children, fallback }: PropT) => {
   const allNull = childrenArray.every((child) => child !== pathname);
 
   if (allNull) {
-    setDataSection("Error 404");
+    setDataSection("Error");
     return fallback;
   } else {
     setDataSection(pathname);
