@@ -12,7 +12,11 @@ type PropT = {
 function NavBar({ nav }: PropT) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    document.body.style.overflow = isOpen ? "auto" : "hidden";
+
+    setIsOpen(!isOpen);
+  };
 
   return (
     <nav className={"z-10 flex h-10 items-center justify-between"}>

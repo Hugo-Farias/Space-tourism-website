@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const useImage = (
   filePath: string,
   fileName: string,
-  fileExt: string,
+  fileExt: "jpg" | "webp" | "svg",
 ): string | null => {
   const [path, setPath] = useState<string | null>(null);
 
