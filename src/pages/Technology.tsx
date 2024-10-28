@@ -47,7 +47,7 @@ const Technology = function () {
             >
               <div
                 data-id={i}
-                className={`flex size-10 items-center justify-center rounded-full border border-white border-opacity-20 bg-white transition-colors duration-500 hover:border-opacity-100 ${isActive ? "bg-white text-black" : "bg-transparent"}`}
+                className={`flex size-10 items-center justify-center rounded-full border border-white border-opacity-20 transition-colors duration-500 hover:border-opacity-100 ${isActive ? "bg-white text-black" : "bg-transparent"}`}
               >
                 {i + 1}
               </div>

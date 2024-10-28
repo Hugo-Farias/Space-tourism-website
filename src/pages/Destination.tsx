@@ -18,8 +18,8 @@ const { destinations }: { destinations: DestinationT[] } = data;
 
 const Destination = function () {
   const [tab, setTab] = useState<number>(0);
-  const destination = destinations[tab];
-  const imgSrc = useImage("destination", destination.images, "webp");
+  const locale = destinations[tab];
+  const imgSrc = useImage("destination", locale.images, "webp");
 
   return (
     <div className={"flex flex-col items-center gap-6 text-center"}>
@@ -33,7 +33,7 @@ const Destination = function () {
           animate={{ opacity: 1, rotate: 0, scale: 1.0 }}
           transition={{ duration: 1 }}
           src={imgSrc}
-          alt={`${toUppercase(destination.name)}'s photo`}
+          alt={`${toUppercase(locale.name)}'s photo`}
         />
       ) : null}
 
@@ -64,13 +64,13 @@ const Destination = function () {
         />
       </ul>
 
-      <Info id={destination.name}>
+      <Info id={locale.name}>
         <h1 className={"font-bellefair text-6xl uppercase -tracking-wide"}>
-          {destination.name}
+          {locale.name}
         </h1>
 
         <p className={"text-[0.95rem] font-light leading-[1.56rem]"}>
-          {destination.description}
+          {locale.description}
         </p>
 
         <div
@@ -87,7 +87,7 @@ const Destination = function () {
               Avg. distance
             </h4>
             <p className={"font-bellefair text-2xl uppercase tracking-widest"}>
-              {destination.distance}
+              {locale.distance}
             </p>
           </div>
           <div className={"flex flex-col gap-3"}>
@@ -99,7 +99,7 @@ const Destination = function () {
               Est. travel time
             </h4>
             <p className={"font-bellefair text-2xl uppercase tracking-widest"}>
-              {destination.travel}
+              {locale.travel}
             </p>
           </div>
         </div>

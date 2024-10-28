@@ -50,10 +50,10 @@ function NavBar({ nav }: PropT) {
                   "space-y-6 font-barlowCondensed text-lg uppercase tracking-widest"
                 }
               >
-                {nav.map((item) => {
+                {nav.map((item, index) => {
                   const isActive = item.path === window.location.pathname;
                   return (
-                    <li key={item.number}>
+                    <li key={index}>
                       <Link
                         className={`flex gap-3 ${
                           isActive ? "opacity-50" : "opacity"
@@ -62,7 +62,7 @@ function NavBar({ nav }: PropT) {
                         onClick={toggleMenu}
                       >
                         <span className={"font-bold"}>
-                          {item.number.toString().padStart(2, "0")}
+                          {index.toString().padStart(2, "0")}
                         </span>
                         <h4 className={"font-light"}>{item.label}</h4>
                       </Link>
@@ -73,7 +73,7 @@ function NavBar({ nav }: PropT) {
             </motion.div>
             <div
               onClick={toggleMenu}
-              className={"fixed left-0 top-0 h-screen w-screen"}
+              className={"fixed left-0 top-0 z-10 h-dvh w-dvw"}
             />
           </>
         )}
