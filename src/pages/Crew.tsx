@@ -5,6 +5,7 @@ import { handleTabSelect, toUppercase } from "../helper.ts";
 import { useState } from "react";
 import useImage from "../hooks/useImage.ts";
 import Info from "../components/Info.tsx";
+import SectionDescription from "../components/SectionDescription.tsx";
 
 type CrewT = {
   name: string;
@@ -65,9 +66,7 @@ const Crew = function () {
           <h2 className={"mb-3 font-bellefair text-2xl uppercase"}>
             {member.name}
           </h2>
-          <p className={"text-[0.95rem] font-extralight leading-[1.56rem]"}>
-            {member.bio}
-          </p>
+          <SectionDescription>{member.bio}</SectionDescription>
         </div>
       </Info>
     </div>

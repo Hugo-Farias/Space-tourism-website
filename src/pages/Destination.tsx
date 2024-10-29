@@ -5,6 +5,7 @@ import data from "../assets/doc/data.json";
 import useImage from "../hooks/useImage.ts";
 import { motion } from "framer-motion";
 import Info from "../components/Info.tsx";
+import SectionDescription from "../components/SectionDescription.tsx";
 
 type DestinationT = {
   name: string;
@@ -69,9 +70,7 @@ const Destination = function () {
           {locale.name}
         </h1>
 
-        <p className={"text-[0.95rem] font-light leading-[1.56rem]"}>
-          {locale.description}
-        </p>
+        <SectionDescription>{locale.description}</SectionDescription>
 
         <div
           className={

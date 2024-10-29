@@ -23,8 +23,8 @@ function App() {
     <div className={"flex flex-col gap-6 p-6"}>
       <NavBar nav={nav} />
       <Routes fallback={<h1 className={"mx-auto text-4xl"}>404</h1>}>
-        {nav.map(({ label, path, comp }) => (
-          <Route key={label} path={path} element={comp} />
+        {nav.map(({ path, comp }) => (
+          <Route key={path} path={path} element={comp} />
         ))}
       </Routes>
     </div>

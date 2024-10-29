@@ -2,8 +2,10 @@ import { useState } from "react";
 import data from "../assets/doc/data.json";
 import SectionTitle from "../components/SectionTitle.tsx";
 import { motion } from "framer-motion";
-import { handleTabSelect, toUppercase } from "../helper.ts";
+import { handleTabSelect } from "../helper.ts";
 import useImage from "../hooks/useImage.ts";
+import Info from "../components/Info.tsx";
+import SectionDescription from "../components/SectionDescription.tsx";
 
 type TechnologyT = {
   name: string;
@@ -24,18 +26,14 @@ const Technology = function () {
   return (
     <div className={"flex flex-col items-center gap-7"}>
       <SectionTitle sectionNumber={3}>Space Launch 101</SectionTitle>
-      <div className={"w-dvw max-w-screen-sm"}>
-        {imgSrc ? (
-          <motion.img
-            key={imgSrc}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            src={imgSrc}
-            alt={`${toUppercase(device.name)}'s photo`}
-          />
-        ) : null}
-      </div>
+      <motion.div
+        key={imgSrc}
+        className={"mb-4 h-44 w-dvw bg-cover bg-center bg-repeat"}
+        style={{ backgroundImage: `url(${imgSrc})` }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      />
       <div className={"space-x-4"}>
         {technology.map((_, i) => {
           const isActive = i === tab;
@@ -55,6 +53,21 @@ const Technology = function () {
           );
         })}
       </div>
+      <p
+        className={
+          "-mb-4 font-bellefair text-xs uppercase tracking-widest text-white/60"
+        }
+      >
+        The Terminology...
+      </p>
+      <Info id={device.name}>
+        <div className={"text-center"}>
+          <h2 className={"mb-3 font-bellefair text-2xl uppercase"}>
+            {device.name}
+          </h2>
+          <SectionDescription>{device.description}</SectionDescription>
+        </div>
+      </Info>
     </div>
   );
 };
