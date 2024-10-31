@@ -28,10 +28,13 @@ const Technology = function () {
       <SectionTitle sectionNumber={3}>Space Launch 101</SectionTitle>
       <motion.div
         key={imgSrc}
-        className={"mb-4 h-44 w-dvw bg-cover bg-center bg-repeat"}
+        className={
+          "mb-2 min-h-44 w-dvw max-w-screen-sm bg-cover bg-center bg-repeat"
+        }
         style={{ backgroundImage: `url(${imgSrc})` }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{ duration: 2 }}
       />
       <div className={"space-x-4"}>
@@ -55,7 +58,7 @@ const Technology = function () {
       </div>
       <p
         className={
-          "-mb-4 font-bellefair text-xs uppercase tracking-widest text-white/60"
+          "-mb-6 font-barlowCondensed font-thin uppercase tracking-widest text-white/80"
         }
       >
         The Terminology...

@@ -23,7 +23,7 @@ const Home = function () {
         className={
           "mt-20 flex size-[9.37rem] items-center justify-center rounded-full bg-white font-bellefair text-[1.4rem] uppercase text-black"
         }
-        to={"/technology"}
+        to={"/destination"}
       >
         Explore
       </Link>
