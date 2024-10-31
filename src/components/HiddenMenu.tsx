@@ -9,7 +9,7 @@ type PropT = {
   toggleMenu: () => void;
 };
 
-const Menu = function ({ isOpen, items, toggleMenu }: PropT) {
+const HiddenMenu = function ({ isOpen, items, toggleMenu }: PropT) {
   return (
     <>
       <button className={"z-30"} onMouseDown={toggleMenu}>
@@ -65,4 +65,4 @@ const Menu = function ({ isOpen, items, toggleMenu }: PropT) {
   );
 };
 
-export default Menu;
+export default HiddenMenu;

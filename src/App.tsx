@@ -20,7 +20,7 @@ export type PathsT = (typeof nav)[number]["path"];
 
 function App() {
   return (
-    <div className={"flex flex-col gap-6 p-6 sm:p-10"}>
+    <div className={"flex flex-col gap-6 px-6 sm:px-10"}>
       <NavBar nav={nav} />
       <Routes fallback={<h1 className={"mx-auto text-4xl"}>404</h1>}>
         {nav.map(({ path, comp }) => (
