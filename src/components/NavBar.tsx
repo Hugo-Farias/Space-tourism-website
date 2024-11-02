@@ -17,12 +17,13 @@ function NavBar({ nav }: PropT) {
   useEffect(() => {
     if (screenSm) {
       setIsOpen(false);
-      document.body.style.overflow = "auto";
     }
   }, [screenSm]);
 
-  const toggleMenu = () => {
-    document.body.style.overflow = isOpen ? "auto" : "hidden";
+  const toggleMenu = function () {
+    if (!screenSm) {
+      document.body.style.overflowY = isOpen ? "auto" : "hidden";
+    }
     setIsOpen(!isOpen);
   };
 

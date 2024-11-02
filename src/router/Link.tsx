@@ -4,7 +4,7 @@ import { PathsT } from "../App.tsx";
 type propT = {
   to: PathsT;
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
 };
 
@@ -15,7 +15,8 @@ const Link = function ({ to, children, onClick, className }: propT) {
     // Prevents the browser from navigating to the URL if page is already active
     if (to.replace("/", "") === window.location.pathname.replace("/", ""))
       return null;
-    if (onClick) onClick();
+
+    if (onClick) onClick(e);
 
     window.history.pushState({}, "", to);
 
