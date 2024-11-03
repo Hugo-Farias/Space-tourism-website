@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import usePathname from "./routerHooks/usePathname.ts";
+import usePathname from "../hooks/usePathname.ts";
 
 type propT = {
   path: string;

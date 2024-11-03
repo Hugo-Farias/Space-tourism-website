@@ -1,13 +1,14 @@
 import { NavT } from "../App.tsx";
 import Link from "../router/Link.tsx";
-import React, { useEffect, useState } from "react";
-import { comparePathName } from "../helper.ts";
+import { useEffect, useState } from "react";
+import usePathname from "../hooks/usePathname.ts";
 
 type PropT = {
   items: readonly NavT[];
 };
 
 const Menu = function ({ items }: PropT) {
+  const pathname = usePathname();
   const [tabPos, setTabPos] = useState(70);
   const [tabWidth, setTabWidth] = useState(0);
 
@@ -16,19 +17,12 @@ const Menu = function ({ items }: PropT) {
       const element = document.getElementById(`menu-${index}`);
       if (!element) return;
 
-      if (!comparePathName(item.path)) return;
+      if (!(item.path === pathname)) return;
 
       setTabPos(element.offsetLeft);
       setTabWidth(element.offsetWidth);
     });
-  }, [items]);
-
-  const onClick = function (e: React.MouseEvent<HTMLAnchorElement>) {
-    const target = e.target as HTMLAnchorElement;
-
-    setTabPos(target.offsetLeft);
-    setTabWidth(target.offsetWidth);
-  };
+  }, [items, pathname]);
 
   return (
     <ul
@@ -37,12 +31,12 @@ const Menu = function ({ items }: PropT) {
       }
     >
       {items.map((item, index) => {
+        const isActive = item.path === pathname;
         return (
           <li key={index} id={`menu-${index}`} className={"h-full"}>
             <Link
               to={item.path}
-              onClick={(e) => onClick(e)}
-              className={"flex h-full items-center justify-center"}
+              className={`flex h-full items-center justify-center ${isActive ? "text-white" : ""}`}
             >
               {item.label}
             </Link>
@@ -50,7 +44,7 @@ const Menu = function ({ items }: PropT) {
         );
       })}
       <div
-        className={`absolute bottom-0 rounded-md border-b-[0.18rem] will-change-transform`}
+        className={`absolute bottom-0 border-b-[0.18rem] will-change-transform`}
         style={{
           translate: `${tabPos - 48}px 0`,
           transitionProperty: "width translate",

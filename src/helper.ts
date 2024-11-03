@@ -19,7 +19,3 @@ export const handleTabSelect = function (
   const id = Number(tgt.dataset.id);
   setTab(id);
 };
-
-export const comparePathName = function (path: string) {
-  return path === window.location.pathname;
-};

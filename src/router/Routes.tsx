@@ -1,5 +1,5 @@
 import { Children, isValidElement, PropsWithChildren, ReactNode } from "react";
-import usePathname from "./routerHooks/usePathname.ts";
+import usePathname from "../hooks/usePathname.ts";
 import { setDataSection } from "../helper.ts";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
