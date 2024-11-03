@@ -1,19 +1,31 @@
 import { NavT } from "../App.tsx";
 import Link from "../router/Link.tsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { comparePathName } from "../helper.ts";
 
 type PropT = {
   items: readonly NavT[];
 };
 
 const Menu = function ({ items }: PropT) {
-  const [tabPos, setTabPos] = useState<number>(70);
+  const [tabPos, setTabPos] = useState(70);
   const [tabWidth, setTabWidth] = useState(0);
+
+  useEffect(() => {
+    items.forEach((item, index) => {
+      const element = document.getElementById(`menu-${index}`);
+      if (!element) return;
+
+      if (!comparePathName(item.path)) return;
+
+      setTabPos(element.offsetLeft);
+      setTabWidth(element.offsetWidth);
+    });
+  }, [items]);
 
   const onClick = function (e: React.MouseEvent<HTMLAnchorElement>) {
     const target = e.target as HTMLAnchorElement;
 
-    console.log(target.offsetWidth);
     setTabPos(target.offsetLeft);
     setTabWidth(target.offsetWidth);
   };
@@ -24,13 +36,19 @@ const Menu = function ({ items }: PropT) {
         "-mr-10 flex h-full items-center gap-10 bg-gray-500/5 px-12 font-barlowCondensed font-light uppercase tracking-widest backdrop-blur-2xl"
       }
     >
-      {items.map((item, index) => (
-        <li key={index} className={"flex w-20 justify-center"}>
-          <Link to={item.path} onClick={onClick}>
-            {item.label}
-          </Link>
-        </li>
-      ))}
+      {items.map((item, index) => {
+        return (
+          <li key={index} id={`menu-${index}`} className={"h-full"}>
+            <Link
+              to={item.path}
+              onClick={(e) => onClick(e)}
+              className={"flex h-full items-center justify-center"}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
       <div
         className={`absolute bottom-0 rounded-md border-b-[0.18rem] will-change-transform`}
         style={{
