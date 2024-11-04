@@ -10,7 +10,7 @@ type PropT = {
 const Menu = function ({ items }: PropT) {
   const pathname = usePathname();
   const [tabPos, setTabPos] = useState(0);
-  const [tabWidth, setTabWidth] = useState(462);
+  const [tabWidth, setTabWidth] = useState<number | null>(null);
 
   useEffect(() => {
     items.forEach((item, index) => {
@@ -19,15 +19,20 @@ const Menu = function ({ items }: PropT) {
 
       if (!(item.path === pathname)) return;
 
-      setTabPos(element.offsetLeft);
-      setTabWidth(element.offsetWidth);
+      setTimeout(
+        () => {
+          setTabPos(element.offsetLeft);
+          setTabWidth(element.offsetWidth);
+        },
+        tabWidth ? 0 : 200,
+      );
     });
-  }, [items, pathname]);
+  }, [items, pathname, tabWidth]);
 
   return (
     <ul
       className={
-        "-mr-10 flex h-full items-center gap-10 overflow-hidden bg-gray-500/5 px-12 font-barlowCondensed font-light uppercase tracking-widest backdrop-blur-2xl"
+        "-mr-10 flex h-full items-center gap-10 overflow-hidden bg-gray-500/5 px-12 font-barlowCondensed font-light uppercase tracking-[0.15em] backdrop-blur-2xl"
       }
     >
       {items.map((item, index) => {
@@ -36,7 +41,7 @@ const Menu = function ({ items }: PropT) {
           <li key={index} id={`menu-${index}`} className={"h-full"}>
             <Link
               to={item.path}
-              className={`flex h-full items-center justify-center ${isActive ? "text-white" : ""}`}
+              className={`flex h-full items-center justify-center hover:text-white ${isActive ? "text-white hover:cursor-default" : ""}`}
             >
               {item.label}
             </Link>
@@ -48,8 +53,8 @@ const Menu = function ({ items }: PropT) {
         style={{
           translate: `${tabPos - 48}px 0`,
           transitionProperty: "width translate",
-          transitionDuration: "0.7s",
-          width: `${tabWidth}px`,
+          transitionDuration: "0.5s",
+          width: tabWidth ? `${tabWidth}px` : "100%",
         }}
       />
     </ul>
