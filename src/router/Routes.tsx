@@ -5,9 +5,10 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 type PropT = {
   fallback: ReactNode;
+  className?: string;
 } & PropsWithChildren;
 
-const Routes = ({ children, fallback }: PropT) => {
+const Routes = ({ children, className, fallback }: PropT) => {
   const [animRef] = useAutoAnimate();
   const pathname = usePathname();
 
@@ -23,7 +24,11 @@ const Routes = ({ children, fallback }: PropT) => {
     return fallback;
   } else {
     setDataSection(pathname);
-    return <div ref={animRef}>{children}</div>;
+    return (
+      <div ref={animRef} className={className}>
+        {children}
+      </div>
+    );
   }
 };
 

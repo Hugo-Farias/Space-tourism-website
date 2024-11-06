@@ -4,7 +4,7 @@ import SectionTitle from "../components/SectionTitle.tsx";
 const Home = function () {
   return (
     <div
-      className={"mx-auto flex flex-col items-center pt-6 text-center sm:gap-5"}
+      className={"mx-auto pt-6 flex flex-col items-center text-center sm:gap-5"}
     >
       <SectionTitle>So, you want to travel to</SectionTitle>
       <h1

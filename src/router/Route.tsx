@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import usePathname from "../hooks/usePathname.ts";
 
 type propT = {
-  path: string;
+  path: `/${string}`;
   element: ReactNode;
 };
 

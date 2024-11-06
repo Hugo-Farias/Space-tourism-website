@@ -2,14 +2,22 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "../router/Link.tsx";
 import { NavT } from "../App.tsx";
 import MenuButton from "./MenuButton.tsx";
+import { useState } from "react";
 
 type PropT = {
-  isOpen: boolean;
   items: readonly NavT[];
-  toggleMenu: () => void;
 };
 
-const HiddenMenu = function ({ isOpen, items, toggleMenu }: PropT) {
+const HiddenMenu = function ({ items }: PropT) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = function () {
+    // document.body.style.overflow = !isOpen ? "hidden" : "auto";
+    document.body.style.overflowY = isOpen ? "scroll" : "hidden";
+
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <button className={"z-30"} onMouseDown={toggleMenu}>
