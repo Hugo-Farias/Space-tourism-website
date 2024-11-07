@@ -12,7 +12,7 @@ const Menu = function ({ items }: PropT) {
   const [tabPos, setTabPos] = useState(0);
   const [tabWidth, setTabWidth] = useState<number | null>(null);
 
-  document.body.style.overflowY = "scroll";
+  // document.body.style.overflowY = "scroll";
 
   useEffect(() => {
     items.forEach((item, index) => {
