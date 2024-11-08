@@ -12,15 +12,13 @@
 
   background-color: #0b0d19;
 
-  /*overflow-y: scroll;*/
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /*min-height: 100%;*/
-  /*min-width: 320px;*/
+  min-height: 100dvh;
+  min-width: 320px;
 
   transition: all 0.2s ease-in-out;
   transition-property: background-image, background-color;

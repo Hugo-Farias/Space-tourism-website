@@ -6,6 +6,7 @@ import useImage from "../hooks/useImage.ts";
 import { motion } from "framer-motion";
 import Info from "../components/Info.tsx";
 import SectionDescription from "../components/SectionDescription.tsx";
+import { useMediaQuery } from "react-responsive";
 
 type DestinationT = {
   name: string;
@@ -18,9 +19,11 @@ type DestinationT = {
 const { destinations }: { destinations: DestinationT[] } = data;
 
 const Destination = function () {
+  const screenSm = useMediaQuery({ query: "( max-width: 640px )" });
   const [tab, setTab] = useState<number>(0);
   const locale = destinations[tab];
   const imgSrc = useImage("destination", locale.images, "webp");
+  const [tabPos, setTabPos] = useState<number | null>(null);
 
   return (
     <div className={"flex flex-col items-center gap-6 text-center"}>
@@ -28,7 +31,7 @@ const Destination = function () {
 
       {imgSrc ? (
         <motion.img
-          className={"size-[10.6rem]"}
+          className={"size-44 sm:size-72"}
           key={imgSrc}
           initial={{ opacity: 0, rotate: 5, scale: 0.95 }}
           animate={{ opacity: 1, rotate: 0, scale: 1.0 }}
@@ -40,7 +43,7 @@ const Destination = function () {
 
       <ul
         className={
-          "relative mt-1.5 flex h-7 font-barlowCondensed text-sm tracking-widest"
+          "relative mt-1.5 flex h-7 font-barlowCondensed text-sm tracking-widest sm:text-base"
         }
       >
         {destinations.map((d, i) => {
@@ -48,7 +51,8 @@ const Destination = function () {
             <li role={"tablist"} key={i}>
               <button
                 data-id={i}
-                className={`w-[4.125rem] pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white`}
+                id={`tab-${i}`}
+                className={`w-16 pb-1 font-extralight uppercase tracking-[0.15rem] transition-colors hover:text-white sm:w-24`}
                 onMouseDown={(e) => handleTabSelect(e, setTab)}
               >
                 {d.name}
@@ -57,9 +61,10 @@ const Destination = function () {
           );
         })}
         <div
-          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem] will-change-transform`}
+          className={`absolute bottom-0 mx-4 w-8 rounded-md border-b-[0.18rem] will-change-transform sm:w-12`}
           style={{
-            translate: `${66 * tab}px 0`,
+            // 64 is the width of one tab
+            translate: `${tab + 1}px 0`,
             transition: "translate .5s",
           }}
         />

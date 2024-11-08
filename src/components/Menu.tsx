@@ -12,8 +12,6 @@ const Menu = function ({ items }: PropT) {
   const [tabPos, setTabPos] = useState(0);
   const [tabWidth, setTabWidth] = useState<number | null>(null);
 
-  // document.body.style.overflowY = "scroll";
-
   useEffect(() => {
     items.forEach((item, index) => {
       const element = document.getElementById(`menu-${index}`);
@@ -53,6 +51,7 @@ const Menu = function ({ items }: PropT) {
       <div
         className={`absolute bottom-0 border-b-[0.18rem] will-change-transform`}
         style={{
+          // 48 = padding from menu container, change 48 to match padding if padding changes
           translate: `${tabPos - 48}px 0`,
           transitionProperty: "width translate",
           transitionDuration: "0.5s",
